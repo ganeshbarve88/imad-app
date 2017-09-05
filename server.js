@@ -21,6 +21,39 @@ var articleOne = {
     
 };
 
+var articleTwo = {
+    
+    title : 'Article two|Ganesh Barve',
+    date : 'Sep 05th, 2017',
+    heading :'Article-two',
+    content :`                <p>
+                    Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
+                </p>
+                <p>
+                    Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
+                </p>
+                <p>
+                    Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
+                </p>`
+    
+};
+
+var articleThree = {
+    title : 'Article three|Ganesh Barve',
+    date : 'Sep 04th, 2017',
+    heading :'Article-three',
+    content :`                <p>
+                    Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
+                </p>
+                <p>
+                    Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
+                </p>
+                <p>
+                    Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
+                </p>`
+    
+};
+
 function createTemplate (data){
     var title=data.title;
     var date=data.date;
@@ -71,11 +104,11 @@ app.get('/article-one', function(req, res){
 });
 
 app.get('/article-two', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+    res.send(createTemplate(articleTwo));
 });
 
 app.get('/article-three', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+    res.send(createTemplate(articleThree));
 });
 
 
