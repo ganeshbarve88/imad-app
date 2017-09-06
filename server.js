@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
+var articles = {
+    'article-one': {
     title : 'Article one|Ganesh Barve',
     date : 'Aug 29th, 2017',
     heading :'Article-one',
@@ -19,9 +20,8 @@ var articleOne = {
                     Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
                 </p>`
     
-};
-
-var articleTwo = {
+},
+    'article-two': {
     
     title : 'Article two|Ganesh Barve',
     date : 'Sep 05th, 2017',
@@ -36,9 +36,8 @@ var articleTwo = {
                     Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
                 </p>`
     
-};
-
-var articleThree = {
+},
+    'article-three': {
     title : 'Article three|Ganesh Barve',
     date : 'Sep 04th, 2017',
     heading :'Article-three',
@@ -52,7 +51,9 @@ var articleThree = {
                     Thhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first articlevvvThhis is my first articlevvvvThhis is my first articleThhis is my first articleThhis is my first articleThhis is my first article
                 </p>`
     
+}
 };
+
 
 function createTemplate (data){
     var title=data.title;
@@ -99,8 +100,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req, res){
-    res.send(createTemplate(articleOne));
+app.get('/:articleName', function(req, res){
+    var articleName =  req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function(req,res){
